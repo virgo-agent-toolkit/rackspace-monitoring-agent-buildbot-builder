@@ -13,11 +13,6 @@ setup() {
   mkdir -p ${SRC_DIR}
 }
 
-setup_cmake() {
-  [ ! -x bin/cmake ] && sh pkgs/cmake-3.1.3-Linux-x86_64.sh --skip-license
-  export PATH=bin:$PATH
-}
-
 build_luvi() {
   LUVI_DIR="${SRC_DIR}/luvi-${LUVI_VERSION}"
   [ -d ${LUVI_DIR} ] || git clone --recursive --branch ${LUVI_VERSION} https://github.com/luvit/luvi ${LUVI_DIR}
@@ -51,7 +46,6 @@ build_rackspace_monitoring_agent() {
 }
 
 setup
-setup_cmake
 build_luvi
 build_lit
 build_lua_sigar
