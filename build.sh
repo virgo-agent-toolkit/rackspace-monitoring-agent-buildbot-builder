@@ -16,6 +16,7 @@ SRC_DIR=${PWD}/src
 setup() {
   mkdir -p ${BUILD_DIR}
   mkdir -p ${SRC_DIR}
+  export PATH=${BUILD_DIR}:$PATH
 }
 
 build_luvi() {
