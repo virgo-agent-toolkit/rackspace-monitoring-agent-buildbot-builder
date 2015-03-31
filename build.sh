@@ -55,6 +55,7 @@ build_rackspace_monitoring_agent() {
     ${BUILD_DIR}/lit make
     make package
     make packagerepo
+    make packagerepoupload
   popd
 }
 
