@@ -54,6 +54,7 @@ build_rackspace_monitoring_agent() {
     cp ${BUILD_DIR}/sigar.so libs/${LUVI_ARCH}-x64
     ${BUILD_DIR}/lit make
     make package
+    make packagerepo
   popd
 }
 
