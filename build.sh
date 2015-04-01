@@ -57,6 +57,8 @@ build_rackspace_monitoring_agent() {
     make packagerepo
     if [ "$SKIP_UPLOAD" != "true" ] ; then
       make packagerepoupload
+      make siggen
+      make siggenupload
     else
       echo "skipping upload"
     fi
