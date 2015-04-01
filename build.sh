@@ -2,7 +2,7 @@
 
 set -e
 
-LUVI_VERSION=v1.0.1
+LUVI_VERSION=master
 LIT_VERSION=1.0.2
 RMA_VERSION=luvi-up
 
@@ -25,6 +25,7 @@ build_luvi() {
     git clone --recursive --branch ${LUVI_VERSION} \
       https://github.com/luvit/luvi ${LUVI_DIR}
   pushd ${LUVI_DIR}
+    export WITHOUT_AMALG=1
     make static && make && cp build/luvi ${BUILD_DIR}
   popd
 }
