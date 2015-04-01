@@ -55,9 +55,24 @@ build_rackspace_monitoring_agent() {
     ${BUILD_DIR}/lit make
     make package
     make packagerepo
-    make packagerepoupload
+    if [ "$SKIP_UPLOAD" != "true" ] ; then
+      make packagerepoupload
+    else
+      echo "skipping upload"
+    fi
   popd
 }
+
+while getopts ":n" o; do
+  case "${o}" in
+    n)
+      SKIP_UPLOAD="true"
+      ;;
+    *)
+      ;;
+  esac
+done
+shift $((OPTIND-1))
 
 setup
 build_luvi
