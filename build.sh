@@ -26,7 +26,7 @@ build_luvi() {
       https://github.com/luvit/luvi ${LUVI_DIR}
   pushd ${LUVI_DIR}
     export WITHOUT_AMALG=1
-    make static && make && cp build/luvi ${BUILD_DIR}
+    make regular && make && cp build/luvi ${BUILD_DIR}
   popd
 }
 
