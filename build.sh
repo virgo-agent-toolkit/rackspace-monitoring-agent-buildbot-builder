@@ -17,8 +17,7 @@ export LIT=${BUILD_DIR}/lit
 export LUVI=${BUILD_DIR}/luvi
 
 setup() {
-  mkdir -p ${BUILD_DIR}
-  mkdir -p ${SRC_DIR}
+  mkdir -p ${BUILD_DIR} ${SRC_DIR}
   export PATH=${BUILD_DIR}:$PATH
 }
 
@@ -54,6 +53,7 @@ build_rackspace_monitoring_agent() {
   LUVI_ARCH=`uname -s`
   [ -d ${RMA_DIR} ] || git clone --branch ${RMA_VERSION} ${RMA_URL} ${RMA_DIR}
   pushd ${RMA_DIR}
+    ln -s ${LUVI} .
     cp ${BUILD_DIR}/sigar.so libs/${LUVI_ARCH}-x64
     ${BUILD_DIR}/lit make
     make package
