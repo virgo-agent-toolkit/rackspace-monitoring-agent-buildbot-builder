@@ -13,6 +13,9 @@ LUA_SIGAR_URL="https://github.com/virgo-agent-toolkit/lua-sigar.git "
 BUILD_DIR=${PWD}/build
 SRC_DIR=${PWD}/src
 
+export LIT=${BUILD_DIR}/lit
+export LUVI=${BUILD_DIR}/luvi
+
 setup() {
   mkdir -p ${BUILD_DIR}
   mkdir -p ${SRC_DIR}
