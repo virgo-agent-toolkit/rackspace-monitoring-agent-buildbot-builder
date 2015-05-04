@@ -2,8 +2,8 @@
 
 set -e
 
-LUVI_VERSION=master
-LIT_VERSION=1.0.2
+LUVI_VERSION=v2.0.5
+LIT_VERSION=1.1.8
 RMA_VERSION=luvi-up
 
 LIT_URL="https://github.com/luvit/lit/archive/$LIT_VERSION.zip"
@@ -31,11 +31,10 @@ build_luvi() {
 }
 
 build_lit() {
-  [ -f ${SIRC_DIR}/lit.zip ] || \
+  [ -f ${SRC_DIR}/lit.zip ] || \
     curl -L $LIT_URL > ${SRC_DIR}/lit.zip
   [ -x ${BUILD_DIR}/lit ] || \
-    LUVI_TARGET=${BUILD_DIR}/lit LUVI_APP=${SRC_DIR}/lit.zip \
-      ${BUILD_DIR}/luvi make ${SRC_DIR}/lit.zip
+    pushd ${BUILD_DIR} ; ${BUILD_DIR}/luvi ${SRC_DIR}/lit.zip -- make ${SRC_DIR}/lit.zip ; popd
 }
 
 build_lua_sigar() {
