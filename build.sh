@@ -24,7 +24,7 @@ setup() {
 build_luvi() {
   LUVI_DIR="${SRC_DIR}/luvi-${LUVI_VERSION}"
   [ -d ${LUVI_DIR} ] || \
-    git clone --recursive --branch ${LUVI_VERSION} \
+    git clone --recursive --branch release \
       https://github.com/luvit/luvi ${LUVI_DIR}
   pushd ${LUVI_DIR}
     export WITHOUT_AMALG=1
