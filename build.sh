@@ -24,7 +24,7 @@ setup() {
 build_luvi() {
   LUVI_DIR="${SRC_DIR}/luvi-${LUVI_VERSION}"
   [ -d ${LUVI_DIR} ] || \
-    git clone --recursive --branch release \
+    git clone --depth=1 --recursive --branch release \
       https://github.com/luvit/luvi ${LUVI_DIR}
   pushd ${LUVI_DIR}
     export WITHOUT_AMALG=1
@@ -42,7 +42,7 @@ build_lit() {
 build_lua_sigar() {
   SIGAR_DIR="${SRC_DIR}/lua-sigar"
   [ -d ${SIGAR_DIR} ] || \
-    git clone --recursive ${LUA_SIGAR_URL} ${SIGAR_DIR}
+    git clone --depth=1 --recursive ${LUA_SIGAR_URL} ${SIGAR_DIR}
   pushd ${SIGAR_DIR}
     make && cp build/sigar.so ${BUILD_DIR}
   popd
@@ -51,7 +51,7 @@ build_lua_sigar() {
 build_rackspace_monitoring_agent() {
   RMA_DIR="${SRC_DIR}/rackspace-monitoring-agent"
   LUVI_ARCH=`uname -s`
-  [ -d ${RMA_DIR} ] || git clone --branch ${RMA_VERSION} ${RMA_URL} ${RMA_DIR}
+  [ -d ${RMA_DIR} ] || git clone --depth=1 --branch ${RMA_VERSION} ${RMA_URL} ${RMA_DIR}
   pushd ${RMA_DIR}
     ln -s ${LUVI} .
     cp ${BUILD_DIR}/sigar.so libs/${LUVI_ARCH}-x64
