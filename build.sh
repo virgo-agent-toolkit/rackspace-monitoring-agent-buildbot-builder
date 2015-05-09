@@ -68,16 +68,38 @@ build_rackspace_monitoring_agent() {
   popd
 }
 
-while getopts ":n" o; do
-  case "${o}" in
-    n)
-      SKIP_UPLOAD="true"
+show_usage() {
+  echo "Usage: $0 [--force-version=VERSION] [-n|--skip-upload]"
+  exit 1
+}
+
+while :; do
+  case $1 in
+    n|--skip-upload)
+      export SKIP_UPLOAD="true"
+      ;;
+    --force-version)
+      if [ -n "${2}" ] ; then
+        export FORCE_VERSION=${2}
+        echo 'Forcing version: ${2}'
+      else
+        echo 'ERROR: version not specified'
+        exit 1
+      fi
+      ;;
+    --) # end of options
+      shift
+      break
+      ;;
+    -h|-\?|--help)
+      show_usage
       ;;
     *)
+      break
       ;;
   esac
+  shift
 done
-shift $((OPTIND-1))
 
 setup
 build_luvi
