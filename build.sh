@@ -35,8 +35,9 @@ build_luvi() {
 build_lit() {
   [ -f ${SRC_DIR}/lit.zip ] || \
     curl -L $LIT_URL > ${SRC_DIR}/lit.zip
-  [ -x ${BUILD_DIR}/lit ] || \
+  [ -x ${BUILD_DIR}/lit ] || {
     pushd ${BUILD_DIR} ; ${BUILD_DIR}/luvi ${SRC_DIR}/lit.zip -- make ${SRC_DIR}/lit.zip ; popd
+  }
 }
 
 build_lua_sigar() {
@@ -53,7 +54,7 @@ build_rackspace_monitoring_agent() {
   LUVI_ARCH=`uname -s`
   [ -d ${RMA_DIR} ] || git clone --depth=1 --branch ${RMA_VERSION} ${RMA_URL} ${RMA_DIR}
   pushd ${RMA_DIR}
-    ln -s ${LUVI} .
+    ln -f -s ${LUVI} .
     cp ${BUILD_DIR}/sigar.so libs/${LUVI_ARCH}-x64
     ${BUILD_DIR}/lit make
     make package
@@ -69,7 +70,7 @@ build_rackspace_monitoring_agent() {
 }
 
 show_usage() {
-  echo "Usage: $0 [--force-version=VERSION] [-n|--skip-upload]"
+  echo "Usage: $0 [--force-version VERSION] [-n|--skip-upload]"
   exit 1
 }
 
@@ -79,12 +80,10 @@ while :; do
       export SKIP_UPLOAD="true"
       ;;
     --force-version)
-      if [ -n "${2}" ] ; then
-        export FORCE_VERSION=${2}
-        echo 'Forcing version: ${2}'
-      else
-        echo 'ERROR: version not specified'
-        exit 1
+      if [ -n "$2" ] ; then
+        export FORCE_VERSION=$2
+        echo "Forcing version: $2"
+        shift
       fi
       ;;
     --) # end of options
