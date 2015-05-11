@@ -55,6 +55,7 @@ build_rackspace_monitoring_agent() {
   [ -d ${RMA_DIR} ] || git clone --depth=1 --branch ${RMA_VERSION} ${RMA_URL} ${RMA_DIR}
   pushd ${RMA_DIR}
     ln -f -s ${LUVI} .
+    ln -f -s ${LIT} .
     cp ${BUILD_DIR}/sigar.so libs/${LUVI_ARCH}-x64
     ${BUILD_DIR}/lit make
     make package
