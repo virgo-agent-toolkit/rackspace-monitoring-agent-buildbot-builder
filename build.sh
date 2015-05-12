@@ -2,8 +2,8 @@
 
 set -e
 
-LUVI_VERSION=v2.0.5
-LIT_VERSION=1.1.8
+LUVI_VERSION=release
+LIT_VERSION=1.2.6
 RMA_VERSION=luvi-up
 
 LIT_URL="https://github.com/luvit/lit/archive/$LIT_VERSION.zip"
@@ -24,7 +24,7 @@ setup() {
 build_luvi() {
   LUVI_DIR="${SRC_DIR}/luvi-${LUVI_VERSION}"
   [ -d ${LUVI_DIR} ] || \
-    git clone --depth=1 --recursive --branch release \
+    git clone --depth=1 --recursive --branch ${LUVI_VERSION} \
       https://github.com/luvit/luvi ${LUVI_DIR}
   pushd ${LUVI_DIR}
     export WITHOUT_AMALG=1
