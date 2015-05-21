@@ -3,7 +3,7 @@
 set -e
 
 LUVI_VERSION=release
-LIT_VERSION=1.2.8
+LIT_VERSION=1.2.9
 RMA_VERSION=luvi-up
 
 LIT_URL="https://github.com/luvit/lit/archive/$LIT_VERSION.zip"
