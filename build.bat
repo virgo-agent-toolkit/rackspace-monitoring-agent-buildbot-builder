@@ -27,9 +27,8 @@ if not exist %RMA_DIR% git clone --depth=1 --branch %RMA_VERSION% %RMA_URL% %RMA
 pushd %RMA_DIR%
 call make.bat
 call make.bat package
-call make.bat packagerepo
 if not "%SKIP_UPLOAD%" == "true" (
-  call make.bat packagerepoupload
+  call make.bat packageupload
 ) else (
   echo "skipping upload"
 )
