@@ -23,7 +23,6 @@ mkdir %SRC_DIR%
 set PATH=%BUILD_DIR%:%PATH%
 
 set RMA_DIR="%SRC_DIR%/rackspace-monitoring-agent"
-set LUVI_ARCH=WIN32
 if not exist %RMA_DIR% git clone --depth=1 --branch %RMA_VERSION% %RMA_URL% %RMA_DIR%
 pushd %RMA_DIR%
 call make.bat
