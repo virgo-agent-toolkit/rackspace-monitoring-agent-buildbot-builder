@@ -67,6 +67,7 @@ build_rackspace_monitoring_agent() {
     else
       echo "skipping upload"
     fi
+    make test
   popd
 }
 
