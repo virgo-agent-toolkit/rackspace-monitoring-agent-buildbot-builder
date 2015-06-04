@@ -13,6 +13,8 @@ LUA_SIGAR_URL="https://github.com/virgo-agent-toolkit/lua-sigar.git "
 BUILD_DIR=${PWD}/build
 SRC_DIR=${PWD}/src
 
+ulimit -c unlimited # capture core dumps
+
 export LIT=${BUILD_DIR}/lit
 export LUVI=${BUILD_DIR}/luvi
 
