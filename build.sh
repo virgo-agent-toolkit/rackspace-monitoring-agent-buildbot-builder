@@ -58,6 +58,7 @@ build_rackspace_monitoring_agent() {
     ln -f -s ${LIT} .
     cp ${BUILD_DIR}/sigar.so libs/${LUVI_ARCH}-x64
     make
+    make test
     make package
     make packagerepo
     if [ "$SKIP_UPLOAD" != "true" ] ; then
@@ -67,7 +68,6 @@ build_rackspace_monitoring_agent() {
     else
       echo "skipping upload"
     fi
-    make test
   popd
 }
 
