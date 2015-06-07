@@ -1,7 +1,5 @@
 #!/bin/bash
 
-set -e
-
 LUVI_VERSION=release
 LIT_VERSION=1.2.9
 RMA_VERSION=luvi-up
@@ -12,8 +10,9 @@ LUA_SIGAR_URL="https://github.com/virgo-agent-toolkit/lua-sigar.git "
 
 BUILD_DIR=${PWD}/build
 SRC_DIR=${PWD}/src
+RESULT=0
 
-ulimit -c unlimited # capture core dumps
+ulimit -c unlimited -S # capture core dumps
 
 export LIT=${BUILD_DIR}/lit
 export LUVI=${BUILD_DIR}/luvi
@@ -51,6 +50,10 @@ build_lua_sigar() {
   popd
 }
 
+check_core() {
+  for i in $(find ./ -maxdepth 1 -name 'core*' -print); do gdb $(pwd)/build/rackspace-monitoring-agent core* -ex "thread apply all bt" -ex "set pagination 0" -batch; done;
+}
+
 build_rackspace_monitoring_agent() {
   RMA_DIR="${SRC_DIR}/rackspace-monitoring-agent"
   LUVI_ARCH=`uname -s`
@@ -59,8 +62,8 @@ build_rackspace_monitoring_agent() {
     ln -f -s ${LUVI} .
     ln -f -s ${LIT} .
     cp ${BUILD_DIR}/sigar.so libs/${LUVI_ARCH}-x64
-    make
-    make test
+    make || (RESULT=$? ; check_core)
+    make test || (RESULT=$? ; check_core)
     make package
     make packagerepo
     if [ "$SKIP_UPLOAD" != "true" ] ; then
