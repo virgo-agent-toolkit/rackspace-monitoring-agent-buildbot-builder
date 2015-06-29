@@ -29,7 +29,7 @@ build_luvi() {
       https://github.com/luvit/luvi ${LUVI_DIR}
   pushd ${LUVI_DIR}
     export WITHOUT_AMALG=1
-    make regular && make && cp build/luvi ${BUILD_DIR}
+    make regular-asm && make && cp build/luvi ${BUILD_DIR}
   popd
 }
 
