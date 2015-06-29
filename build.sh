@@ -1,7 +1,7 @@
 #!/bin/bash
 
 LUVI_VERSION=release
-LIT_VERSION=1.2.9
+LIT_VERSION=2.1.2
 RMA_VERSION=luvi-up
 
 LIT_URL="https://github.com/luvit/lit/archive/$LIT_VERSION.zip"
