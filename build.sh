@@ -1,10 +1,10 @@
 #!/bin/bash
 
 LUVI_VERSION=release
-LIT_VERSION=2.1.2
+LIT_VERSION=v2.1.2
 RMA_VERSION=luvi-up
 
-LIT_URL="https://github.com/luvit/lit/archive/$LIT_VERSION.zip"
+LIT_URL="https://lit.luvit.io/packages/luvit/lit/v$LIT_VERSION.zip"
 RMA_URL="https://github.com/virgo-agent-toolkit/rackspace-monitoring-agent"
 LUA_SIGAR_URL="https://github.com/virgo-agent-toolkit/lua-sigar.git "
 
