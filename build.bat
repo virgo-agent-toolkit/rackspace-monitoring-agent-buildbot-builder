@@ -4,7 +4,7 @@ set LUVI_VERSION=release
 set LIT_VERSION=2.1.2
 set RMA_VERSION=luvi-up
 
-set LIT_URL="https://github.com/luvit/lit/archive/$LIT_VERSION.zip"
+set LIT_URL="https://lit.luvit.io/packages/luvit/lit/v%LIT_VERSION%.zip"
 set RMA_URL="https://github.com/virgo-agent-toolkit/rackspace-monitoring-agent"
 set LUA_SIGAR_URL="https://github.com/virgo-agent-toolkit/lua-sigar.git "
 
