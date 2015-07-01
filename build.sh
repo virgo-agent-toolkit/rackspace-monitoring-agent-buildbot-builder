@@ -12,6 +12,7 @@ BUILD_DIR=${PWD}/build
 SRC_DIR=${PWD}/src
 RESULT=0
 
+set -e
 ulimit -c unlimited -S # capture core dumps
 
 export LIT=${BUILD_DIR}/lit
