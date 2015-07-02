@@ -62,7 +62,10 @@ build_rackspace_monitoring_agent() {
   pushd ${RMA_DIR}
     ln -f -s ${LUVI} .
     ln -f -s ${LIT} .
-    cp ${BUILD_DIR}/sigar.so libs/${LUVI_ARCH}-x64
+    arch_dir=libs/`${LUVI} . -m contrib/printbinarydir/main.lua`
+    mkdir -p ${arch_dir}
+    echo copying sigar.so to ${arch_dir}
+    cp -f ${BUILD_DIR}/sigar.so ${arch_dir}
     make || (RESULT=$? ; check_core)
     make test || (RESULT=$? ; check_core)
     make package
