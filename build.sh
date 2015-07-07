@@ -2,7 +2,7 @@
 
 LUVI_VERSION=release
 LIT_VERSION=2.1.4
-RMA_VERSION=luvi-up
+RMA_VERSION=master
 
 LIT_URL="https://lit.luvit.io/packages/luvit/lit/v$LIT_VERSION.zip"
 RMA_URL="https://github.com/virgo-agent-toolkit/rackspace-monitoring-agent"

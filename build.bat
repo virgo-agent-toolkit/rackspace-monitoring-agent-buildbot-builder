@@ -2,7 +2,7 @@ echo off
 
 set LUVI_VERSION=release
 set LIT_VERSION=2.1.4
-set RMA_VERSION=luvi-up
+set RMA_VERSION=master
 
 set LIT_URL="https://lit.luvit.io/packages/luvit/lit/v%LIT_VERSION%.zip"
 set RMA_URL="https://github.com/virgo-agent-toolkit/rackspace-monitoring-agent"
