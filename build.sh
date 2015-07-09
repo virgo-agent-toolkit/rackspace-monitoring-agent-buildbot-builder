@@ -24,6 +24,7 @@ setup() {
 }
 
 build_luvi() {
+  WITHOUT_AMALG=1
   LUVI_DIR="${SRC_DIR}/luvi-${LUVI_VERSION}"
   [ -d ${LUVI_DIR} ] || \
     git clone --depth=1 --recursive --branch ${LUVI_VERSION} \
