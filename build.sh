@@ -1,10 +1,11 @@
 #!/bin/bash
 
-LUVI_VERSION=release
+LUVI_VERSION=add_sigar
 LIT_VERSION=2.1.4
-RMA_VERSION=master
+RMA_VERSION=remove_sigar_libs
 
 LIT_URL="https://lit.luvit.io/packages/luvit/lit/v$LIT_VERSION.zip"
+LUVI_URL="https://github.com/virgo-agent-toolkit/luvi.git"
 RMA_URL="https://github.com/virgo-agent-toolkit/rackspace-monitoring-agent"
 LUA_SIGAR_URL="https://github.com/virgo-agent-toolkit/lua-sigar.git "
 
@@ -27,11 +28,9 @@ build_luvi() {
   WITHOUT_AMALG=1
   LUVI_DIR="${SRC_DIR}/luvi-${LUVI_VERSION}"
   [ -d ${LUVI_DIR} ] || \
-    git clone --depth=1 --recursive --branch ${LUVI_VERSION} \
-      https://github.com/luvit/luvi ${LUVI_DIR}
+    git clone --recursive --branch ${LUVI_VERSION} ${LUVI_URL} ${LUVI_DIR}
   pushd ${LUVI_DIR}
-    export WITHOUT_AMALG=1
-    make regular-asm && make && cp build/luvi ${BUILD_DIR}
+    WITHOUT_AMALG=1 make regular-asm && make && cp build/luvi ${BUILD_DIR}
   popd
 }
 
@@ -41,15 +40,6 @@ build_lit() {
   [ -x ${BUILD_DIR}/lit ] || {
     pushd ${BUILD_DIR} ; ${BUILD_DIR}/luvi ${SRC_DIR}/lit.zip -- make ${SRC_DIR}/lit.zip ; popd
   }
-}
-
-build_lua_sigar() {
-  SIGAR_DIR="${SRC_DIR}/lua-sigar"
-  [ -d ${SIGAR_DIR} ] || \
-    git clone --depth=1 --recursive ${LUA_SIGAR_URL} ${SIGAR_DIR}
-  pushd ${SIGAR_DIR}
-    make && cp build/sigar.so ${BUILD_DIR}
-  popd
 }
 
 check_core() {
@@ -65,8 +55,6 @@ build_rackspace_monitoring_agent() {
     ln -f -s ${LIT} .
     arch_dir=libs/`${LUVI} . -m contrib/printbinarydir/main.lua`
     mkdir -p ${arch_dir}
-    echo copying sigar.so to ${arch_dir}
-    cp -f ${BUILD_DIR}/sigar.so ${arch_dir}
     make || (RESULT=$? ; check_core)
     make test || (RESULT=$? ; check_core)
     make package
@@ -115,5 +103,4 @@ done
 setup
 build_luvi
 build_lit
-build_lua_sigar
 build_rackspace_monitoring_agent
