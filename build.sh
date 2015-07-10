@@ -1,8 +1,8 @@
 #!/bin/bash
 
-LUVI_VERSION=add_sigar
-LIT_VERSION=2.1.4
-RMA_VERSION=remove_sigar_libs
+LUVI_VERSION=rackspace
+LIT_VERSION=2.1.7
+RMA_VERSION=master
 
 LIT_URL="https://lit.luvit.io/packages/luvit/lit/v$LIT_VERSION.zip"
 LUVI_URL="https://github.com/virgo-agent-toolkit/luvi.git"
