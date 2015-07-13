@@ -38,7 +38,7 @@ build_lit() {
   [ -f ${SRC_DIR}/lit.zip ] || \
     curl -L $LIT_URL > ${SRC_DIR}/lit.zip
   [ -x ${BUILD_DIR}/lit ] || {
-    pushd ${BUILD_DIR} ; ${BUILD_DIR}/luvi ${SRC_DIR}/lit.zip -- make ${SRC_DIR}/lit.zip ; popd
+    pushd ${BUILD_DIR} ; ${BUILD_DIR}/luvi ${SRC_DIR}/lit.zip -- make ${SRC_DIR}/lit.zip ${BUILD_DIR}/lit ${BUILD_DIR}/luvi; popd
   }
 }
 
