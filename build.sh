@@ -48,13 +48,11 @@ check_core() {
 
 build_rackspace_monitoring_agent() {
   RMA_DIR="${SRC_DIR}/rackspace-monitoring-agent"
-  LUVI_ARCH=`uname -s`
   [ -d ${RMA_DIR} ] || git clone --depth=1 --branch ${RMA_VERSION} ${RMA_URL} ${RMA_DIR}
   pushd ${RMA_DIR}
     ln -f -s ${LUVI} .
+    ln -f -s ${LUVI} luvi-sigar
     ln -f -s ${LIT} .
-    arch_dir=libs/`${LUVI} . -m contrib/printbinarydir/main.lua`
-    mkdir -p ${arch_dir}
     make || (RESULT=$? ; check_core)
     make test || (RESULT=$? ; check_core)
     make package
