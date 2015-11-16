@@ -1,7 +1,7 @@
 #!/bin/bash
 
 LUVI_VERSION=rackspace
-LIT_VERSION=2.1.11
+LIT_VERSION=2.2.15
 RMA_VERSION=master
 
 LIT_URL="https://lit.luvit.io/packages/luvit/lit/v$LIT_VERSION.zip"
