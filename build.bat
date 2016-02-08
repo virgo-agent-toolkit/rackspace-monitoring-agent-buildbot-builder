@@ -1,7 +1,7 @@
 echo off
 
 set LUVI_VERSION=release
-set LIT_VERSION=2.3.0
+set LIT_VERSION=3.1.0
 set RMA_VERSION=master
 
 set LIT_URL="https://lit.luvit.io/packages/luvit/lit/v%LIT_VERSION%.zip"
