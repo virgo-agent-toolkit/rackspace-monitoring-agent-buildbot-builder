@@ -2,7 +2,7 @@
 
 LUVI_VERSION=rackspace
 LIT_VERSION=3.4.3
-RMA_VERSION=master
+RMA_VERSION=${RMA_VERSION:-master}
 
 LIT_URL="https://lit.luvit.io/packages/luvit/lit/v$LIT_VERSION.zip"
 LUVI_URL="https://github.com/virgo-agent-toolkit/luvi.git"
