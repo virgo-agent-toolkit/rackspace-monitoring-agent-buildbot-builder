@@ -1,6 +1,6 @@
 echo off
 
-set LUVI_VERSION=release
+set LUVI_VERSION=v2.9.3-sigar
 set LIT_VERSION=3.7.3
 set RMA_VERSION=master
 

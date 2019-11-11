@@ -1,6 +1,7 @@
 #!/bin/bash
 
-LUVI_VERSION=rackspace
+# LUVI_VERSION should reference latest release on rackspace branch
+LUVI_VERSION=v2.9.3-sigar
 LIT_VERSION=3.7.3
 RMA_VERSION=${RMA_VERSION:-master}
 
