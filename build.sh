@@ -20,6 +20,15 @@ ulimit -c unlimited -S # capture core dumps
 export LIT=${BUILD_DIR}/lit
 export LUVI=${BUILD_DIR}/luvi
 
+OS_RELEASE_FILE=/etc/os-release
+if [ -f "$OS_RELEASE_FILE" ]; then
+    echo "$OS_RELEASE_FILE contains:"
+    echo "$(cat $OS_RELEASE_FILE)"
+    echo "================================"
+else 
+    echo "$OS_RELEASE_FILE does not exist."
+fi
+
 setup() {
   mkdir -p ${BUILD_DIR} ${SRC_DIR}
   export PATH=${BUILD_DIR}:$PATH
