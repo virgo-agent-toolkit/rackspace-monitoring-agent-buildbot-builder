@@ -1,7 +1,7 @@
 echo off
 
-set LUVI_VERSION=v2.9.3-sigar
-set LIT_VERSION=3.7.3
+set LUVI_VERSION=v2.7.6-2-sigar
+set LIT_VERSION=3.1.0
 set RMA_VERSION=master
 
 set LIT_URL="https://lit.luvit.io/packages/luvit/lit/v%LIT_VERSION%.zip"
