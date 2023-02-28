@@ -15,4 +15,4 @@ cd /agent2
 ./build.sh
 
 # to keep docker session connected
-/bin/bash "$@"
+#/bin/bash "$@"
